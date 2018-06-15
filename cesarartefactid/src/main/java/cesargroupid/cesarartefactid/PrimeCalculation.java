@@ -11,17 +11,19 @@ public class PrimeCalculation
         Calculator miCalculator= new Calculator();
         long initTime = System.nanoTime(); 
         
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 250; i++) {
         	
-			if (miCalculator.searchPrimeNumberOne(i)) {
-				miCalculator.storeListCousinsHash(i);
-				//miCalculator.storeListCousinsArray(i);
+			if (miCalculator.searchPrimeNumberTwo(i)) {
+				//miCalculator.storeListCousinsHash(i);
+				miCalculator.storeListCousinsArray(i);
 				
 			}
 		}
-        long durationTime = ((System.nanoTime() - initTime));        
-        miCalculator.showPrimesInHash(miCalculator.hastablePrimes);
-        //miCalculator.showPrimesInArray(miCalculator.arrayPrimes);
+        
+        long durationTime = (((System.nanoTime() - initTime)/1000)/1000)/1000; 
+        //System.err.println(durationTime);
+        //miCalculator.showPrimesInHash(miCalculator.hastablePrimes);
+        miCalculator.showPrimesInArray(miCalculator.arrayPrimes); 
         System.err.println(durationTime);
     }
 }

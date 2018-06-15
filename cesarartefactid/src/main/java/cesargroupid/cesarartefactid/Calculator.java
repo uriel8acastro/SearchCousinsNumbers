@@ -14,6 +14,8 @@ public class Calculator {
 		int countDivisor = 0;
 		if (number == 0)
 			return false;
+		if (number == 1)
+			return false;
 
 		for (int i = 1; i <= number; i++) {
 			if (number % i == 0) {
@@ -31,7 +33,10 @@ public class Calculator {
 	public boolean searchPrimeNumberTwo(int number) {
 		int countDivisor = 0;
 
-		if (number == 1 || number == 2 || number == 3 || number == 5 || number == 7) {
+		if (number == 1)
+			return false;
+
+		if (number == 2 || number == 3 || number == 5 || number == 7) {
 			return true;
 		}
 
@@ -92,7 +97,7 @@ public class Calculator {
 				if (isCircularPrime(integerOri, integerParent)) {
 					arrayPrimesResults.add(integerParent);
 				}
-					
+
 			}
 		}
 
