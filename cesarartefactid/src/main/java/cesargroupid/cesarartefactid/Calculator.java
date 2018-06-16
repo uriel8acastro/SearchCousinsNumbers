@@ -4,11 +4,27 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
+/**
+ * Clase principal donde se busca, y se ordenan numeros primos
+ * 
+ * @author cesar8a
+ * 
+ */
+
 public class Calculator {
 
 	public Hashtable<String, String> hastablePrimes = new Hashtable<String, String>();
 	public ArrayList<Integer> arrayPrimes = new ArrayList<>();
 	public ArrayList<Integer> arrayPrimesResults = new ArrayList<>();
+
+	/**
+	 * Metodo para determinar si un numero es o no primo implementa las mejoras de
+	 * la criba de eratostenes y el iterar solo la mitad del numero
+	 * 
+	 * @param number
+	 *            es un numero entre 1 y un millon
+	 * @return false si no es primo y verdadero si lo es.
+	 */
 
 	public boolean searchPrimeNumberOne(int number) {
 		int countDivisor = 0;
@@ -31,10 +47,23 @@ public class Calculator {
 		if (countDivisor >= 1) {
 			return false;
 		}
-
-		for (int i = 1; i <= (number / 2) + 1; i++) {
-			if (number % i == 0) {
+		// Mejora que permite solo iterar la mitan mas uno del numero
+		// reduciendo asi el tiempo.
+		for (int i = 1; i <= number; i++) {
+			/*
+			Si el numero esta en la mitad y no se encuentra divisor aumenta el contador
+			y rompe el ciclo
+			*/
+			if (i > (number / 2)) {
 				countDivisor++;
+				break;
+			}
+
+			if (number % i == 0) {
+
+				countDivisor++;
+				if (countDivisor > 2)
+					break;
 			}
 		}
 		if (countDivisor > 2)
@@ -44,6 +73,15 @@ public class Calculator {
 		}
 
 	}
+
+	/**
+	 * Metodo que determina si un numero es o no primo bajo la regla de tener solo
+	 * dos divisores exactos el 1 y el mismo
+	 * 
+	 * @param number
+	 *            es un entero entre 1 y un millon
+	 * @return verdadero si el numero es primo y falso si no lo es.
+	 */
 
 	public boolean searchPrimeNumberTwo(int number) {
 		int countDivisor = 0;
@@ -80,14 +118,33 @@ public class Calculator {
 
 	}
 
+	/**
+	 * Metodo que permite guardar un numero primo como una tabla hash
+	 * 
+	 * @param number
+	 *            Entero primo entre 1 y 1000000
+	 */
+
 	public void storeListCousinsHash(int number) {
 		hastablePrimes.put(" " + hastablePrimes.size(), " " + number);
 	}
 
+	/**
+	 * Metodo que permite guardar un numero primo como un array de Integers
+	 * 
+	 * @param number
+	 *            Entero primo entre 1 y un millon
+	 */
 	public void storeListCousinsArray(int number) {
 		arrayPrimes.add(number);
 	}
 
+	/**
+	 * Metodo para imprimir el contenido de una tabla Hash
+	 * 
+	 * @param hastable
+	 *            Una tabla hash de primos entre 1 y un millon
+	 */
 	public void showPrimesInHash(Hashtable<String, String> hastable) {
 		Enumeration<String> enumeration = hastable.elements();
 		int count = 1;
@@ -97,6 +154,12 @@ public class Calculator {
 		}
 	}
 
+	/**
+	 * Metodo para imprimir el contenido de un array de integers
+	 * 
+	 * @param arrayPrimes
+	 *            un array de numero primos comprendifosd entre 1 y un millon
+	 */
 	public void showPrimesInArray(ArrayList<Integer> arrayPrimes) {
 		int count = 1;
 		for (Integer integer : arrayPrimes) {
@@ -105,6 +168,13 @@ public class Calculator {
 		}
 	}
 
+	/**
+	 * Metodo que muestra el arreglo final de primos que cumplen la propiedad de ser
+	 * parientes
+	 * 
+	 * @param arrayOriginal
+	 *            Arreglo con todos los numero primos exitentes entre 1 y un millon
+	 */
 	public void showPrimesResults(ArrayList<Integer> arrayOriginal) {
 
 		for (Integer integerOri : arrayPrimes) {
@@ -165,9 +235,16 @@ public class Calculator {
 
 	}
 
+	/**
+	 * Metodo usado en las prubas unitarias
+	 * 
+	 * @param limit
+	 *            cuanto primos se dese buscar
+	 * @return listado de primos hast el limite dado.
+	 */
 	public ArrayList<Integer> getListPrimes(int limit) {
 		for (int i = 1; i <= limit; i++) {
-			if (searchPrimeNumberTwo(i)) {
+			if (searchPrimeNumberOne(i)) {
 				// storeListCousinsHash(i);
 				storeListCousinsArray(i);
 
