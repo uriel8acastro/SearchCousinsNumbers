@@ -12,9 +12,9 @@ public class PrimeCalculation
         long initTime = System.nanoTime(); 
         long initTimeMill = System.currentTimeMillis(); 
         
-        for (int i = 0; i < 1000000; i++) {
+        for (int i = 0; i < 20; i++) {
         	
-			if (miCalculator.searchPrimeNumberTwo(i)) {
+			if (miCalculator.searchPrimeNumberOne(i)) {
 				//miCalculator.storeListCousinsHash(i);
 				miCalculator.storeListCousinsArray(i);
 				

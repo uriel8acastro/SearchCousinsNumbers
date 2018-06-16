@@ -22,7 +22,7 @@ public class PrimeClaculationTest2 {
 	public void validateParentsNumbers2() {
 		miArray.add(31);
 		miArray.add(13);
-		assertTrue(miCalculator.isCircularPrime(miArray.get(0), miArray.get(1)));
+		assertTrue(miCalculator.isNumberBrother(miArray.get(0), miArray.get(1)));
 
 	}
 	
@@ -30,13 +30,12 @@ public class PrimeClaculationTest2 {
 	public void validateParentsNumbers3() {
 		miArray.add(917);
 		miArray.add(197);
-		assertTrue(miCalculator.isCircularPrime(miArray.get(0), miArray.get(1)));
+		assertTrue(miCalculator.isNumberBrother(miArray.get(0), miArray.get(1)));
 
 	}
 
 	@Test
 	public void validateSearchPrimes() {
-		miArray.add(1);
 		miArray.add(2);
 		miArray.add(3);
 		miArray.add(5);
@@ -47,7 +46,7 @@ public class PrimeClaculationTest2 {
 
 	@Test
 	public void SearchCircularPrimes() {
-        miArray = miCalculator.getListPrimes(100);
+        miArray = miCalculator.getListPrimes(1000);
         miCalculator.showPrimesResults(miArray);
 		
 	}

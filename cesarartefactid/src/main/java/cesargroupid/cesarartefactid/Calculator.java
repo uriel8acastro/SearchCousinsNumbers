@@ -16,8 +16,23 @@ public class Calculator {
 			return false;
 		if (number == 1)
 			return false;
+		if (number == 2 || number == 3 || number == 5 || number == 7) {
+			return true;
+		}
+		// Criba de eratostenes
+		if (number % 2 == 0)
+			countDivisor++;
+		if (number % 3 == 0)
+			countDivisor++;
+		if (number % 5 == 0)
+			countDivisor++;
+		if (number % 7 == 0)
+			countDivisor++;
+		if (countDivisor >= 1) {
+			return false;
+		}
 
-		for (int i = 1; i <= number; i++) {
+		for (int i = 1; i <= (number / 2) + 1; i++) {
 			if (number % i == 0) {
 				countDivisor++;
 			}
@@ -39,7 +54,7 @@ public class Calculator {
 		if (number == 2 || number == 3 || number == 5 || number == 7) {
 			return true;
 		}
-
+		// Criba de Eratostenes
 		if (number % 2 == 0)
 			countDivisor++;
 		if (number % 3 == 0)
@@ -94,7 +109,7 @@ public class Calculator {
 
 		for (Integer integerOri : arrayPrimes) {
 			for (Integer integerParent : arrayOriginal) {
-				if (isCircularPrime(integerOri, integerParent)) {
+				if (isNumberBrother(integerOri, integerParent)) {
 					arrayPrimesResults.add(integerParent);
 				}
 
@@ -116,10 +131,13 @@ public class Calculator {
 	 *            es el numero primo posible pariente
 	 * @return
 	 */
-	public boolean isCircularPrime(Integer original, Integer parent) {
+	public boolean isNumberBrother(Integer original, Integer parent) {
 		int count = 0;
+
+		if (original.intValue() <= 11 || parent.intValue() <= 11)
+			return false;
+
 		if (original.intValue() == parent.intValue()) {
-			System.err.println(original.intValue());
 			return false;
 		}
 
