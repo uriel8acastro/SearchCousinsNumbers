@@ -8,21 +8,12 @@ package cesargroupid.cesarartefactid;
  */
 public class PrimeCalculation {
 	public static void main(String[] args) throws InterruptedException {
-		Calculator miCalculator = new Calculator();
-		long initTimeMill = System.currentTimeMillis();
-		for (int i = 0; i < 1000000; i++) {
-
-			if (miCalculator.searchPrimeNumberOne(i)) {
-				// miCalculator.storeListCousinsHash(i);
-				miCalculator.storeListCousinsArray(i);
-
-			}
-		}
-
-		long durationTimeMill = (System.currentTimeMillis() - initTimeMill);
-		miCalculator.showPrimesInArray(miCalculator.arrayPrimes);
+		Calculator myPrimeCalculator = new Calculator();
+		long initTimeFirts = System.currentTimeMillis();
+		myPrimeCalculator.firstSolution(1000);
+		long durationTimeFirts = (System.currentTimeMillis() - initTimeFirts);
 		Thread.sleep(3000);
-		System.err.println(durationTimeMill / 1000);
+		System.err.println(durationTimeFirts / 1000);
 		/*
 	    ---------algoritmo uno------
 		78493 999931

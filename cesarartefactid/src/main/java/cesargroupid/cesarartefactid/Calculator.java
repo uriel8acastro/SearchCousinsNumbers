@@ -51,9 +51,9 @@ public class Calculator {
 		// reduciendo asi el tiempo.
 		for (int i = 1; i <= number; i++) {
 			/*
-			Si el numero esta en la mitad y no se encuentra divisor aumenta el contador
-			y rompe el ciclo
-			*/
+			 * Si el numero esta en la mitad y no se encuentra divisor aumenta el contador y
+			 * rompe el ciclo
+			 */
 			if (i > (number / 2)) {
 				countDivisor++;
 				break;
@@ -251,6 +251,38 @@ public class Calculator {
 			}
 		}
 		return arrayPrimes;
+	}
+
+	public void firstSolution(int upperLimit) {
+		for (int i = 1; i < upperLimit; i++) {
+			if (searchPrimeNumberOne(i)) {
+				storeListCousinsArray(i);
+
+			}
+			
+		}
+		showPrimesResults(arrayPrimes);
+
+	}
+
+	public void secondSolution(int upperLimit) {
+		for (int i = 1; i < upperLimit; i++) {
+			if (searchPrimeNumberTwo(i)) {
+				storeListCousinsArray(i);
+
+			}			
+		}
+		showPrimesResults(arrayPrimes);
+	}
+
+	public void thirdSolution(int upperLimit) {
+		for (int i = 1; i < upperLimit; i++) {
+			if (searchPrimeNumberOne(i)) {
+				storeListCousinsHash(i);
+
+			}
+		}		
+
 	}
 
 }
